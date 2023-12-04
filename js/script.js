@@ -44,14 +44,37 @@ for(let i = 0; i<team.length; i++){
     for(let x in team[i]){
         console.log(team[i][x]);
     }
-    
-    let card = `<div class='col-4 text-center'>`;
-    
-    card += `<img src='./img/${team[i].image}'>`
-    card += `<h6>${team[i].name}</h6>`
-    card += `<h6>${team[i].role}</h6>`
-    
-    card += `</div>`
 
-    container.innerHTML += card;
+    let card = document.createElement('div');
+    card.classList.add('col-4', 'text-center', 'd-flex', 'flex-column');
+
+    for(let x in team[i]){
+        let datum;
+
+        if(x == 'image'){
+            datum = document.createElement('img');
+            datum.src = `./img/${team[i][x]}`;
+            datum.classList.add('order-1');
+        }
+        else{
+            datum = document.createElement('div');
+            datum.innerHTML += team[i][x];
+            datum.classList.add('order-3');
+        }
+
+        card.appendChild(datum);
+    }
+
+    container.appendChild(card);
+
+    // ALT CARD-CREATING VERSION
+    // let card = `<div class='col-4 text-center'>`;
+    
+    // card += `<img src='./img/${team[i].image}'>`
+    // card += `<h6>${team[i].name}</h6>`
+    // card += `<h6>${team[i].role}</h6>`
+    
+    // card += `</div>`
+
+    // container.innerHTML += card;
 }
