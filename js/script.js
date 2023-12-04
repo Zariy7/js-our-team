@@ -62,6 +62,7 @@ for(let i = 0; i<team.length; i++){
             datum.classList.add('order-3');
         }
 
+        datum.classList.add('bg-white');
         card.appendChild(datum);
     }
 
